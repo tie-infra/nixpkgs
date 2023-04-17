@@ -36352,6 +36352,8 @@ with pkgs;
 
   eboard = callPackage ../games/eboard { };
 
+  eco-server = callPackage ../games/eco-server { };
+
   ecwolf = callPackage ../games/ecwolf { };
 
   eduke32 = callPackage ../games/eduke32 {
