@@ -101,6 +101,10 @@ jobs:
             # Note that this requires fetchSteamDepot patch above.
             echo https://github.com/NixOS/nixpkgs/compare/tie:nixpkgs:fetch-steam...tie:nixpkgs:eco-game-server.patch
 
+            # satisfactory-server: init at 0.7.1.1-4.26.2+211839
+            # Note that this requires fetchSteamDepot patch above.
+            echo https://github.com/NixOS/nixpkgs/compare/tie:nixpkgs:fetch-steam...tie:nixpkgs:satisfactory-game-server.patch
+
             # edac-utils: unstable-2015-01-07 -> unstable-2023-01-30
             echo https://github.com/NixOS/nixpkgs/pull/234603.patch
 
