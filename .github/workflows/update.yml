@@ -91,6 +91,9 @@ jobs:
       - name: Apply patches
         run: |
           for patchurl in $(
+            # nixos/networkd: allow state ranges in RequiredForOnline
+            echo https://github.com/NixOS/nixpkgs/pull/242191.patch
+
             # libgdiplus: 6.0.5 -> 6.1
             echo https://github.com/NixOS/nixpkgs/pull/236930.patch
 
