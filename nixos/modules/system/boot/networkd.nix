@@ -489,7 +489,20 @@ let
 
     network = {
 
-      sectionLink = checkUnitConfig "Link" [
+      sectionLink = let
+        operationalStates = [
+          "missing"
+          "off"
+          "no-carrier"
+          "dormant"
+          "degraded-carrier"
+          "carrier"
+          "degraded"
+          "enslaved"
+          "routable"
+        ];
+        operationalStateRanges = flatten (imap0 (i: min: map (max: "${min}:${max}") (drop i operationalStates)) operationalStates);
+      in checkUnitConfig "Link" [
         (assertOnlyFields [
           "MACAddress"
           "MTUBytes"
@@ -512,17 +525,7 @@ let
         (assertValueOneOf "Unmanaged" boolValues)
         (assertInt "Group")
         (assertRange "Group" 0 2147483647)
-        (assertValueOneOf "RequiredForOnline" (boolValues ++ [
-          "missing"
-          "off"
-          "no-carrier"
-          "dormant"
-          "degraded-carrier"
-          "carrier"
-          "degraded"
-          "enslaved"
-          "routable"
-        ]))
+        (assertValueOneOf "RequiredForOnline" (boolValues ++ operationalStates ++ operationalStateRanges))
         (assertValueOneOf "RequiredFamilyForOnline" [
           "ipv4"
           "ipv6"
